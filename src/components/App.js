@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Home from "./Home";
 import Actors from "./Actors";
@@ -8,20 +8,16 @@ import Movies from "./Movies";
 
 function App() {
   return (
-    <div>
-    <NavBar />
-    <Routes>
-      <Route path="/movies" element={<Movies />}>
-      </Route>
-      <Route path="/directors" element={<Directors />}>
-      </Route>
-      <Route path="/actors" element={<Actors />}>
-      </Route>
-      <Route path="/" element={<Home />}>
-      </Route>
-    </Routes>
-    </div>
-  )
+    <BrowserRouter>
+      <NavBar />
+      <Switch>
+        <Route path="/actors"><Actors /></Route>
+        <Route path="/directors"><Directors /></Route>
+        <Route path="/movies"><Movies /></Route>
+        <Route exact path="/"><Home /></Route>
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default App;
